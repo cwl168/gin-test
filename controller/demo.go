@@ -33,7 +33,7 @@ func (demo *DemoController) Dao(c *gin.Context) {
 		middleware.ResponseError(c, 2000, err)
 		return
 	}
-	area, err := (&dao.Area{}).Find(c, tx, c.DefaultQuery("id", "1"));
+	area, err := (&dao.Area{}).Find(c, tx, c.DefaultQuery("id", "1"))
 	if err != nil {
 		middleware.ResponseError(c, 2001, err)
 		return

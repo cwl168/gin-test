@@ -2,11 +2,11 @@ package router
 
 import (
 	"github.com/e421083458/gin_scaffold/controller"
+	"github.com/e421083458/gin_scaffold/docs"
 	"github.com/e421083458/gin_scaffold/middleware"
 	"github.com/e421083458/golang_common/lib"
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
-	"github.com/e421083458/gin_scaffold/docs"
 	"github.com/swaggo/files"
 	"github.com/swaggo/gin-swagger"
 )
