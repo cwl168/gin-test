@@ -75,7 +75,20 @@ CREATE TABLE `area` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='area';
 INSERT INTO `area` (`id`, `area_name`, `city_id`, `user_id`, `update_at`, `create_at`, `delete_at`) VALUES (NULL, 'area_name', '1', '2', '2019-06-15 00:00:00', '2019-06-15 00:00:00', '2019-06-15 00:00:00');
 ```
-
+```
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) COLLATE utf8_bin NOT NULL,
+  `addr` varchar(50) COLLATE utf8_bin NOT NULL,
+  `age` tinyint(2) NOT NULL,
+  `birth` varchar(20) COLLATE utf8_bin NOT NULL,
+  `sex` tinyint(2) NOT NULL,
+  `update_at` datetime DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+```
 ```
 curl 'http://127.0.0.1:8880/demo/dao?id=1'
 {
