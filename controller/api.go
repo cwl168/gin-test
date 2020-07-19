@@ -29,6 +29,7 @@ func ApiLoginRegister(router *gin.RouterGroup) {
 	router.POST("/user/remove", curd.RemoveUser)
 	router.POST("/user/batchremove", curd.RemoveUser)
 }
+
 //curl -X POST -d 'username=admin&password=123456' 'http://127.0.0.1:8880/api/login'
 func (demo *ApiController) Login(c *gin.Context) {
 	api := &dto.LoginInput{}
@@ -111,6 +112,7 @@ func (demo *ApiController) AddUser(c *gin.Context) {
 	return
 }
 
+//提交的数据格式  {"id":16,"name":"cwl1","addr":"sh","age":20,"birth":"2020-07-19","sex":1,"update_at":"2020-07-19T15:59:51+08:00","create_at":"2020-07-19T15:59:51+08:00"}
 func (demo *ApiController) EditUser(c *gin.Context) {
 	editInput := &dto.EditUserInput{}
 	if err := editInput.BindingValidParams(c); err != nil {
@@ -123,7 +125,7 @@ func (demo *ApiController) EditUser(c *gin.Context) {
 		middleware.ResponseError(c, 2002, err)
 		return
 	}
-
+	log.Println(editInput.Id)
 	user, err := (&dao.User{}).Find(c, tx, int64(editInput.Id))
 	if err != nil {
 		middleware.ResponseError(c, 2002, err)

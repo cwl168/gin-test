@@ -5,6 +5,7 @@ import (
 	"github.com/e421083458/gin_scaffold/public"
 	"github.com/e421083458/gorm"
 	"github.com/gin-gonic/gin"
+	"log"
 	"time"
 )
 
@@ -37,11 +38,13 @@ func (f *User) Del(c *gin.Context, tx *gorm.DB, idSlice []string) error {
 }
 
 func (f *User) Find(c *gin.Context, tx *gorm.DB, id int64) (*User, error) {
-	var user *User
+	//var user *User  报错 Error #01: unsupported destination, should be slice or struct
+	user := new(User)
 	err := tx.SetCtx(public.GetGinTraceContext(c)).Where("id = ?", id).First(user).Error
 	if err != nil {
 		return nil, err
 	}
+	log.Println(user)
 	return user, nil
 }
 
