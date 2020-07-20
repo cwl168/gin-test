@@ -145,6 +145,7 @@ func (demo *ApiController) EditUser(c *gin.Context) {
 	return
 }
 
+//删除用户 curl -X POST -H 'Content-Type:application/json'  -d '{"ids":"1"}' 'http://127.0.0.1:8880/api/user/remove' -b 'mysession=MTU5NTIxNjUyMXxEdi1CQkFFQ180SUFBUkFCRUFBQUlfLUNBQUVHYzNSeWFXNW5EQVlBQkhWelpYSUdjM1J5YVc1bkRBY0FCV0ZrYldsdXwXywj0-rIw857bWFLjupPhXXQHshb6ijk8v5r4USUiYw=='
 func (demo *ApiController) RemoveUser(c *gin.Context) {
 	removeInput := &dto.RemoveUserInput{}
 	if err := removeInput.BindingValidParams(c); err != nil {
@@ -157,7 +158,7 @@ func (demo *ApiController) RemoveUser(c *gin.Context) {
 		middleware.ResponseError(c, 2002, err)
 		return
 	}
-	if err := (&dao.User{}).Del(c, tx, strings.Split(removeInput.IDS, ",")); err != nil {
+	if err := (&dao.User{}).Del(c, tx, strings.Split(removeInput.Ids, ",")); err != nil {
 		middleware.ResponseError(c, 2002, err)
 		return
 	}

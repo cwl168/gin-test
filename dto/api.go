@@ -50,7 +50,7 @@ func (params *EditUserInput) BindingValidParams(c *gin.Context) error {
 }
 
 type RemoveUserInput struct {
-	IDS string `form:"ids" json:"ids" comment:"IDS" validate:"required"`
+	Ids string `form:"ids" json:"ids" comment:"Ids" validate:"required"`
 }
 
 func (params *RemoveUserInput) BindingValidParams(c *gin.Context) error {
